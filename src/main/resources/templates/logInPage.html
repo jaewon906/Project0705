@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="/css/logInPage.css" rel="stylesheet"/>
     <title>Title</title>
 </head>
 <body>
+<h1>로그인 !!!!</h1>
+<div id="container">
+    <div id="main">
+        <form action="/signUp" method="post">
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        <label> <input id="id" name="id" type="text"/></label>
+                    </td>
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <label><input id="password" name="password" type="password"/></label>
+                    </td>
+                <tr>
+                    <td>닉네임</td>
+                    <td>
+                        <label><input id="nickname" name="nickname" type="text"/></label>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit">등록하기</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
