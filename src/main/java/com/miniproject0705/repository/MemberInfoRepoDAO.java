@@ -1,11 +1,19 @@
 package com.miniproject0705.repository;
 
 import com.miniproject0705.domain.MemberInfoDTO;
+import jakarta.persistence.EntityManager;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MemberInfoRepoDAO {
-    MemberInfoDTO saveInfo(MemberInfoDTO memberInfoDTO); // 회원정보 저장
+import java.util.Optional;
 
-    MemberInfoDTO findInfo(MemberInfoDTO memberInfoDTO); // 회원정보 찾기
+public interface MemberInfoRepoDAO{
 
-    MemberInfoDTO deleteInfo(MemberInfoDTO memberInfoDTO); // 회원정보 삭제
+    MemberInfoDTO save(MemberInfoDTO memberInfoDTO); // 회원정보 저장
+
+    Optional<MemberInfoDTO> findMemberInfoDTOByIdAndPassword(MemberInfoDTO memberInfoDTO); // 회원정보 찾기
+
+    MemberInfoDTO modifyInfo(MemberInfoDTO memberInfoDTO); // 회원정보 수정
+
+    MemberInfoDTO delete(); // 회원정보 삭제
 }
