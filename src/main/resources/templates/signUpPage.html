@@ -32,6 +32,18 @@
                         <label><input id="nickname" name="nickname" th:value="*{nickname}" type="text"/></label>
                     </td>
                 </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td>
+                        <label><input id="email" name="email" th:value="*{email}" type="text"/></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>주소</td>
+                    <td>
+                        <label><input id="address" name="address" th:value="*{address}" type="text"/></label>
+                    </td>
+                </tr>
             </table>
             <button type="submit">등록하기</button>
             <h1 th:text="${formData.id}"></h1>

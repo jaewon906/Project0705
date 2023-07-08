@@ -1,39 +1,26 @@
 package com.miniproject0705.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity //@Table을 생략하면 테이블 명이 MemberInfoDTO인 곳으로 매핑
-@Table(name = "MEMBER_INFO")
+@Getter //getter 메서드를 만들지 않아도 된다
+@Setter //setter 메서드를 만들지 않아도 된다.
+@NoArgsConstructor // 기본 생성자를 자동으로 만들어줌
+@AllArgsConstructor // 모든 필드값을 매개변수로 받는 생성자를 만듬
 public class MemberInfoDTO {
-    @Id //기본키를 나타내기 위해 사용
-    @GeneratedValue(strategy = GenerationType.AUTO) // Long 타입이면 IDENTITY가능, String 이면 AUTO or SEQUENCE
-    private String id;
-    @Column(nullable = false) //기본적으로 테이블 컬럼의 password로 매핑, name속성으로 name="user_pw" 로 지정할 수 있다.
-    private String password;
-    @Column(nullable = false)
-    private String nickname;
 
-    public String getId() {
-        return id;
-    }
+    private String id; //id
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    private String password; //password
 
-    public String getPassword() {
-        return password;
-    }
+    private String nickname; // nickname
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    private String email; //email
 
-    public String getNickname() {
-        return nickname;
-    }
+    private String address; //address
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
+
 }
