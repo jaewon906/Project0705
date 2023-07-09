@@ -1,6 +1,6 @@
 package com.miniproject0705.domain;
 
-import jakarta.persistence.*;
+import com.miniproject0705.entity.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,9 @@ import lombok.Setter;
 @AllArgsConstructor // 모든 필드값을 매개변수로 받는 생성자를 만듬
 public class MemberInfoDTO {
 
-    private String id; //id
+    private Long No; //PK
+
+    private String userId; //id
 
     private String password; //password
 
@@ -21,6 +23,20 @@ public class MemberInfoDTO {
     private String email; //email
 
     private String address; //address
+
+    public static MemberInfoDTO toMemberInfoDTO(MemberEntity memberEntity) {
+        MemberInfoDTO memberInfoDTO = new MemberInfoDTO();
+
+        memberInfoDTO.setNo(memberEntity.getNo());
+        memberInfoDTO.setUserId(memberEntity.getUserId());
+        memberInfoDTO.setPassword(memberEntity.getPassword());
+        memberInfoDTO.setNickname(memberEntity.getNickname());
+        memberInfoDTO.setEmail(memberEntity.getEmail());
+        memberInfoDTO.setAddress(memberEntity.getAddress());
+
+        return memberInfoDTO;
+    }
+
 
 
 }

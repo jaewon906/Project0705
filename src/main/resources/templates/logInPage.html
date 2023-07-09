@@ -9,26 +9,20 @@
 <h1>로그인 !!!!</h1>
 <div id="container">
     <div id="main">
-        <form action="/signUp" method="post">
+        <form action="/logIn" method="post" th:object="${formData}">
             <table>
                 <tr>
                     <td>아이디</td>
                     <td>
-                        <label> <input id="id" name="id" type="text"/></label>
+                        <label> <input id="userId" name="userId" type="text" th:value="*{userId}"/></label>
                     </td>
                 <tr>
                     <td>비밀번호</td>
                     <td>
-                        <label><input id="password" name="password" type="password"/></label>
+                        <label><input id="password" name="password" type="password" th:value="*{password}"/></label>
                     </td>
-                <tr>
-                    <td>닉네임</td>
-                    <td>
-                        <label><input id="nickname" name="nickname" type="text"/></label>
-                    </td>
-                </tr>
             </table>
-            <button type="submit">등록하기</button>
+            <button type="submit">로그인하기</button>
         </form>
     </div>
 </div>

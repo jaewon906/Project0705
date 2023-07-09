@@ -14,19 +14,17 @@
                 <tr>
                     <td>아이디</td>
                     <td>
-                        <label><input id="id" name="id" th:value="*{id}" type="text"/></label>
+                        <label><input id="userId" name="userId" th:value="*{userId}" type="text"/></label>
                     </td>
                 </tr>
 
                 <tr>
-
                     <td>비밀번호</td>
                     <td>
                         <label><input id="password" name="password" th:value="*{password}" type="password"/></label>
                     </td>
                 </tr>
                 <tr>
-
                     <td>닉네임</td>
                     <td>
                         <label><input id="nickname" name="nickname" th:value="*{nickname}" type="text"/></label>
@@ -46,7 +44,7 @@
                 </tr>
             </table>
             <button type="submit">등록하기</button>
-            <h1 th:text="${formData.id}"></h1>
+            <h1 th:text="${formData.userId}"></h1>
             <h1 th:text="${formData.password}"></h1>
             <h1 th:text="${formData.nickname}"></h1>
         </form>
