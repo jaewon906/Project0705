@@ -1,4 +1,9 @@
 # miniProject0705
-# 실행환경 : window 11, RAM 16G 
-# springBoot 3.1.1, JDK 17, hibernate 6.2.5, lombok 1.18.28, oracle 19C
-# jakarta persistence-api 3.1.0, JDBC:ojdbc8:19.3.0.0, 
+
+# 실행환경 : window 11, RAM 16G
+
+# springBoot 3.1.1, JDK 17, hibernate 6.2.5, lombok 1.18.28, oracle 19C,
+
+# jakarta persistence-api 3.1.0, JDBC:ojdbc8:19.3.0.0,
+
+# 7월 10일자 진행상태 : 로그인 & 회원가입 완료 (oracle연동, jpa, lombok 활용)
