@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/homePage.css" rel="stylesheet">
+    <link href="/css/CSS/homePage.css" rel="stylesheet">
     <title>Title</title>
 </head>
+
 <body>
 <div id="container">
     <div id="header">
@@ -19,10 +20,14 @@
     </div>
     <div id="main">
         <div id="leftAside"></div>
-        <div id="mainCenter"></div>
+        <div id="mainCenter">
+            <button onclick="toSave()">글작성</button>
+            <button onclick="toList()">글목록</button>
+        </div>
         <div id="rightAside"></div>
     </div>
     <div id="footer"></div>
 </div>
 </body>
+<script th:src="@{/js/script.js}"></script>
 </html>

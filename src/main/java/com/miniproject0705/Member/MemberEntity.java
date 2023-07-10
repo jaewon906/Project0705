@@ -1,6 +1,5 @@
-package com.miniproject0705.entity;
+package com.miniproject0705.Member;
 
-import com.miniproject0705.domain.MemberInfoDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

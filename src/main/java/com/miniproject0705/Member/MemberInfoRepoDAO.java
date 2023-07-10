@@ -1,10 +1,6 @@
-package com.miniproject0705.repository;
+package com.miniproject0705.Member;
 
-import com.miniproject0705.domain.MemberInfoDTO;
-import com.miniproject0705.entity.MemberEntity;
-import jakarta.persistence.EntityManager;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 

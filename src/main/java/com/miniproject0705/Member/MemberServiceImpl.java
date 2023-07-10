@@ -1,8 +1,5 @@
-package com.miniproject0705.service;
+package com.miniproject0705.Member;
 
-import com.miniproject0705.domain.MemberInfoDTO;
-import com.miniproject0705.entity.MemberEntity;
-import com.miniproject0705.repository.MemberInfoRepoDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -68,13 +65,8 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberInfoDTO findById(Long id) { //특정 id에 해당하는 데이터 찾기
         Optional<MemberEntity> optionalMemberEntity = memberInfoRepoDAO.findById(id);
-        if (optionalMemberEntity.isPresent()) {
-//          get() 메서드로 한 번 거쳐야 Optional 객체안의 memberEntity에 접근할 수 있다.
-            return MemberInfoDTO.toMemberInfoDTO(optionalMemberEntity.get());
-
-        } else {
-            return null;
-        }
+        //          get() 메서드로 한 번 거쳐야 Optional 객체안의 memberEntity에 접근할 수 있다.
+        return optionalMemberEntity.map(MemberInfoDTO::toMemberInfoDTO).orElse(null);
     }
 
     @Override
@@ -100,13 +92,4 @@ public class MemberServiceImpl implements MemberService {
         memberInfoRepoDAO.deleteById(id);
     }
 
-    @Override
-    public void findMyAccount() {
-
-    }
-
-    @Override
-    public void withdrawal() {
-
-    }
 }

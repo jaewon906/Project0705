@@ -1,7 +1,5 @@
-package com.miniproject0705.controller;
+package com.miniproject0705.Member;
 
-import com.miniproject0705.domain.MemberInfoDTO;
-import com.miniproject0705.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,5 @@
-package com.miniproject0705.domain;
+package com.miniproject0705.Member;
 
-import com.miniproject0705.entity.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
