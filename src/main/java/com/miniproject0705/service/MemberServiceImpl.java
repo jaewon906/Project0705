@@ -6,13 +6,14 @@ import com.miniproject0705.repository.MemberInfoRepoDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
     private final MemberInfoRepoDAO memberInfoRepoDAO;
-
 
     @Override
     public MemberInfoDTO save(MemberInfoDTO memberInfoDTO) {
@@ -51,6 +52,52 @@ public class MemberServiceImpl implements MemberService {
             return null;
         }
 
+    }
+
+    @Override
+    public List<MemberInfoDTO> findAll() { //모든 회원목록 불러오기
+        List<MemberEntity> memberEntityList = memberInfoRepoDAO.findAll();
+        List<MemberInfoDTO> memberDTOList = new ArrayList<>();
+
+        for (MemberEntity memberEntity : memberEntityList) {
+            memberDTOList.add(MemberInfoDTO.toMemberInfoDTO(memberEntity));
+        }
+        return memberDTOList;
+    }
+
+    @Override
+    public MemberInfoDTO findById(Long id) { //특정 id에 해당하는 데이터 찾기
+        Optional<MemberEntity> optionalMemberEntity = memberInfoRepoDAO.findById(id);
+        if (optionalMemberEntity.isPresent()) {
+//          get() 메서드로 한 번 거쳐야 Optional 객체안의 memberEntity에 접근할 수 있다.
+            return MemberInfoDTO.toMemberInfoDTO(optionalMemberEntity.get());
+
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public MemberInfoDTO updateForm(String userId) {
+        Optional<MemberEntity> optionalMemberEntity = memberInfoRepoDAO.findByUserId(userId);
+        if (optionalMemberEntity.isPresent()) {
+            return MemberInfoDTO.toMemberInfoDTO(optionalMemberEntity.get());
+        } else {
+            return null;
+        }
+
+    }
+
+    @Override
+    public void update(MemberInfoDTO memberInfoDTO) { // 회원정보 수정
+        //save 내장 메서드는 no(pk)값이 없는 엔티티가 넘어오면 INSERT 쿼리문을 수행하고 no값이 있는 엔티티가 넘어오면 UPDATE 쿼리문을 수행
+        MemberEntity updateMemberEntity = MemberEntity.toMemberEntity(memberInfoDTO);
+        memberInfoRepoDAO.save(updateMemberEntity);
+    }
+
+    @Override
+    public void deleteById(Long id) { //회원정보 삭제
+        memberInfoRepoDAO.deleteById(id);
     }
 
     @Override

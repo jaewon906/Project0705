@@ -24,8 +24,8 @@ public class LoginController {
     public String postLogin(@ModelAttribute("formData") MemberInfoDTO memberInfoDTO, HttpSession session) {
         MemberInfoDTO loginResult = memberService.signIn(memberInfoDTO);
         if (loginResult != null) {
-            session.setAttribute("loginId", loginResult.getUserId());
-            return "logInPage";
+            session.setAttribute("userId", loginResult.getUserId());
+            return "homePage";
         }
         else {
 

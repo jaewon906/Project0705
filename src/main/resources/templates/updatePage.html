@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/update" method="post" th:object="${updateMember}">
+    <label>
+        <input type="hidden" th:value="*{no}" name="no">
+        <input type="hidden" th:value="*{userId}" name="userId">
+  이름 : <input type="text" th:value="*{userName}" name="userName">
+  비밀번호 : <input type="password" th:value="*{password}" name="password">
+  닉네임 : <input type="text" th:value="*{nickname}" name="nickname">
+  이메일 : <input type="text" th:value="*{email}" name="email" readonly>
+  주소 : <input type="text" th:value="*{address}" name="address">
+    </label>
+    <button type="submit" value="정보수정">정보수정</button>
+</form>
+
+</body>
+</html>

@@ -9,25 +9,17 @@
     <tr>
         <th>userId</th>
         <th>password</th>
-        <th>userName</th>
         <th>nickname</th>
         <th>email</th>
         <th>address</th>
     </tr>
-    <tr th:each="member:${findList}">
+    <tr>
         <td th:text="${member.userId}"></td>
         <td th:text="${member.password}"></td>
-        <td th:text="${member.userName}"></td>
         <td th:text="${member.nickname}"></td>
         <td th:text="${member.email}"></td>
         <td th:text="${member.address}"></td>
-<!--        요즘에는 쿼리스트링 대신 REST API를 많이 씁니다.
-            서버에서 가져온 데이터와 같이 표현하고 싶을 때 @{| |}
--->
-        <td><a th:href="@{|findIdPw/${member.no}|}">조회</a></td>
-        <td><a th:href="@{|findIdPw/delete/${member.no}|}">삭제</a></td>
     </tr>
 </table>
-
 </body>
 </html>

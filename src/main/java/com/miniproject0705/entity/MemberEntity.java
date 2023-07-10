@@ -21,11 +21,13 @@ public class MemberEntity {
     private String userId;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
+    private String userName;
     @Column(unique = true, nullable = false)
     private String nickname;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
-    @Column
+    @Column(nullable = false)
     private String address;
 
     // DTO 객체를 Entity로 넘겨줘야 합니다.
@@ -35,6 +37,7 @@ public class MemberEntity {
         memberEntity.setNo(memberInfoDTO.getNo());
         memberEntity.setUserId(memberInfoDTO.getUserId());
         memberEntity.setPassword(memberInfoDTO.getPassword());
+        memberEntity.setUserName(memberInfoDTO.getUserName());
         memberEntity.setNickname(memberInfoDTO.getNickname());
         memberEntity.setEmail(memberInfoDTO.getEmail());
         memberEntity.setAddress(memberInfoDTO.getAddress());

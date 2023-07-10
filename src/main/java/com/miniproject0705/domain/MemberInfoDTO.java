@@ -18,6 +18,8 @@ public class MemberInfoDTO {
 
     private String password; //password
 
+    private String userName; //이름
+
     private String nickname; // nickname
 
     private String email; //email
@@ -30,13 +32,13 @@ public class MemberInfoDTO {
         memberInfoDTO.setNo(memberEntity.getNo());
         memberInfoDTO.setUserId(memberEntity.getUserId());
         memberInfoDTO.setPassword(memberEntity.getPassword());
+        memberInfoDTO.setUserName(memberEntity.getUserName());
         memberInfoDTO.setNickname(memberEntity.getNickname());
         memberInfoDTO.setEmail(memberEntity.getEmail());
         memberInfoDTO.setAddress(memberEntity.getAddress());
 
         return memberInfoDTO;
     }
-
 
 
 }
