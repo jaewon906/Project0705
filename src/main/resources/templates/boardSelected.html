@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table th:object="${selected}">
+    <tr>
+        <th>No.</th>
+        <td th:text="*{pageNum}"></td>
+
+        <th>title</th>
+        <td th:text="*{boardTitle}"></td>
+
+        <th>writer</th>
+        <td th:text="*{boardWriter}"></td>
+
+        <th>date</th>
+        <td th:text="*{#temporals.format(boardCreatedTime, 'yyyy-MM-dd')}"></td>
+
+        <th>hits</th>
+        <td th:text="*{boardHits}"></td>
+
+        <th>contents</th>
+        <td th:text="*{boardContents}"></td>
+
+    </tr>
+</table>
+<button onclick="toModify()">수정하기</button>
+<button onclick="toList()">목록으로</button>
+<button onclick="toDelete()">삭제하기</button>
+</body>
+<script th:inline="javascript">
+
+    const toModify = () =>{
+        const pageNum =[[${selected.pageNum}]]
+        location.href="/board/update/" + pageNum;
+    }
+    const toDelete = () =>{
+        const pageNum = [[${selected.pageNum}]]
+        const ret = confirm("삭제하시겠습니까?")
+
+        if(ret){
+            alert("삭제되었습니다.")
+            location.href="/board/delete/" + pageNum;
+        }
+        else{
+            alert("취소했습니다.")
+        }
+    }
+    const toList=()=>{ //글목록 페이지 이동
+        location.href="/board"
+    }
+</script>
+</html>

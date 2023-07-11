@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/board/update" method="post" th:object="${updating}" name="updateForm">
+    <label>
+        <input type="hidden" name="pageNum" th:value="*{pageNum}">
+        writer : <input name="boardWriter" type="text" th:value="*{boardWriter}"><br/>
+        password : <input name="boardPassWord" type="password" id="pw"><br/>
+        title : <input name="boardTitle" type="text" th:value="*{boardTitle}"><br/>
+        contents : <div style="height: 300px; width: 400px; border: 1px solid black"><input style=" width:100%; height: 100%" name="boardContents" th:value="*{boardContents}"></div><br/>
+        <button type="button" onclick="toUpdate()">수정하기</button>
+    </label>
+</form>
+</body>
+<script th:inline="javascript">
+    const toUpdate=()=>{
+        const password = [[${updating.boardPassWord}]]
+        const inputPassword = document.getElementById("pw").value;
+
+        if(password == inputPassword){
+            document.updateForm.submit();
+        }
+        else{
+            alert("비밀번호가 일치하지 않습니다.");
+        }
+    }
+</script>
+</html>

@@ -12,15 +12,15 @@ public class BoardEntity extends TimeBaseEntity { //DB 역할을 하는 클래�
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long pageNum;
 
     @Column(length = 20, nullable = false) //길이 20, not null
     private String boardWriter;
 
-    @Column // 길이 = 255(default), null 가능
+    @Column(length = 20, nullable = false) // 길이 = 255(default), null 가능
     private String boardPassWord;
 
-    @Column
+    @Column(nullable = false)
     private String boardTitle;
 
     @Column(length = 500)
@@ -28,6 +28,19 @@ public class BoardEntity extends TimeBaseEntity { //DB 역할을 하는 클래�
 
     @Column
     private int boardHits;
+
+    public static BoardEntity DTOtoEntity(BoardDomain boardDomain) {
+        BoardEntity boardEntity = new BoardEntity();
+
+        boardEntity.setPageNum(boardDomain.getPageNum());
+        boardEntity.setBoardWriter(boardDomain.getBoardWriter());
+        boardEntity.setBoardContents(boardDomain.getBoardContents());
+        boardEntity.setBoardTitle(boardDomain.getBoardTitle());
+        boardEntity.setBoardPassWord(boardDomain.getBoardPassWord());
+        boardEntity.setBoardHits(boardDomain.getBoardHits());
+
+        return boardEntity;
+    }
 
 
 
