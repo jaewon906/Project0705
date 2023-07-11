@@ -51,7 +51,7 @@
         }
     }
     const toList=()=>{ //글목록 페이지 이동
-        location.href="/board"
+        location.href="/board/paging?page="+[[${page}]]; // 목록 이동시 마지막으로 봤던 게시판 목록으로 이동하게 해줌
     }
 </script>
 </html>

@@ -29,6 +29,9 @@ public class BoardEntity extends TimeBaseEntity { //DB 역할을 하는 클래�
     @Column
     private int boardHits;
 
+    @Column
+    private int fileAttached;
+
     public static BoardEntity DTOtoEntity(BoardDomain boardDomain) {
         BoardEntity boardEntity = new BoardEntity();
 
@@ -38,11 +41,10 @@ public class BoardEntity extends TimeBaseEntity { //DB 역할을 하는 클래�
         boardEntity.setBoardTitle(boardDomain.getBoardTitle());
         boardEntity.setBoardPassWord(boardDomain.getBoardPassWord());
         boardEntity.setBoardHits(boardDomain.getBoardHits());
+        boardEntity.setFileAttached(boardDomain.getFileAttached());
 
         return boardEntity;
     }
-
-
 
 
 }

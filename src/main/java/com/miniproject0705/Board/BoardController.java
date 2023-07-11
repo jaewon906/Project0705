@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,7 +24,7 @@ public class BoardController {
     }
 
     @PostMapping("/save") // @RequestMapping에 의해 "board/save"로 인식
-    public String save(@ModelAttribute("formData") BoardDomain boardDomain) {
+    public String save(@ModelAttribute("formData") BoardDomain boardDomain) throws IOException { // transferTo() 때문에 예외처리함
         boardService.save(boardDomain);
         return "redirect:/";
     }
@@ -36,10 +37,11 @@ public class BoardController {
     }
 
     @GetMapping("/{pageNum}")
-    public String findOne(@PathVariable Long pageNum, Model model) { // 특정 게시글 조회
+    public String findOne(@PathVariable Long pageNum, Model model, @PageableDefault(page = 1) Pageable pageable) { // 특정 게시글 조회
         boardService.updateHits(pageNum);
         BoardDomain boardDomain = boardService.findById(pageNum);
         model.addAttribute("selected", boardDomain);
+        model.addAttribute("page", pageable.getPageNumber());
         return "boardSelected";
     }
 
@@ -68,7 +70,6 @@ public class BoardController {
     // board/paging?page=2 쿼리스트링에서 page=2 부분을 pageable객체가 받아 줄 것이다.
     // 기본값을 설정해야 내가 처음에 설정한 페이지 개수가 나오게 된다.
     public String pagingForm(@PageableDefault(page = 1) Pageable pageable, Model model) {
-        pageable.getPageNumber();
         Page<BoardDomain> boardList = boardService.paging(pageable); //DTO가 담긴 page 인터페이스 객체 생성
         int blockLimit = 3; // 하단 페이지 번호 개수
         int startPage = (((int)Math.ceil((double)pageable.getPageNumber() / blockLimit))-1) * blockLimit + 1;

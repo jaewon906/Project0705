@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<table>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>writer</th>
+        <th>date</th>
+        <th>hits</th>
+    </tr>
+    <tr th:each="board:${boardList}">
+        <td th:text="${board.pageNum}"></td>
+        <td><a th:href="@{|/board/${board.pageNum}?page=${boardList.number+1}|}" th:text="${board.boardTitle}"></a></td> <!--목록 이동시 마지막으로 봤던 게시판 목록으로 이동하게 해줌-->
+        <td th:text="${board.boardWriter}"></td>
+        <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd')}"></td>
+        <td th:text="${board.boardHits}"></td>
+    </tr>
+</table>
+<!-- 처음으로 이동-->
+<!--/board/paging?page=1 과 동일하게 동작-->
+<a th:href="@{/board/paging(page=1)}">처음</a>
+<!-- 이전 링크 활성화 비활성화-->
+<a th:if="${boardList.first}==true" href="#">이전</a>
+<a th:unless="${boardList.first}==true" th:href="@{/board/paging(page=${boardList.number})}">이전</a>
 
+<!--페이지 번호 링크(현재 페이지는 숫자만)-->
+<!--= for(int i=startPage; i<endPage; i++)-->
+<span th:each="page : ${#numbers.sequence(startPage, endPage)}">
+    <span th:if="${page==boardList.number + 1}" th:text="${page}"></span>
+    <span th:unless="${page==boardList.number + 1}">
+        <a th:href="@{/board/paging(page=${page})}" th:text="${page}"></a>
+    </span>
+</span>
+<!--다음 링크 활성화 비활성화-->
+<!--<a th:href="${boardList.last} ? '#' : @{/board/paging(page=${boardList.number + 2})}">다음</a>-->
+<a th:if="${boardList.last}==true" href="#">다음</a>
+<a th:unless="${boardList.last}==true" th:href="@{/board/paging(page=${boardList.number + 2})}">다음</a>
+
+<!--마지막 페이지로 이동-->
+<a th:href="@{/board/paging(page=${boardList.totalPages})}">마지막</a>
 </body>
 </html>
