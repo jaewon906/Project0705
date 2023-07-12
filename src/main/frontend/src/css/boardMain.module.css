@@ -1,0 +1,42 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid red;
+}
+.category{
+    width:100%;
+    height:50px;
+    border: 1px solid #7fb6ff;
+    display: flex;
+}
+a{
+    width: 25%;
+    height:100%;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    color: black;
+}
+.category > a > div{
+    width:100%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #7fb6ff;
+    cursor: pointer;
+}
+.category > a:hover{
+    background-color: #af1bd8;
+    color : white;
+}

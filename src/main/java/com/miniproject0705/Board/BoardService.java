@@ -15,9 +15,9 @@ public interface BoardService {
 
     BoardDomain update(BoardDomain boardDomain);
 
-    void updateHits(Long pageNum);
+    void updateHits(Long id);
 
-    void delete(Long pageNum);
+    void delete(Long id);
 
     Page<BoardDomain> paging(Pageable pageable);
 }

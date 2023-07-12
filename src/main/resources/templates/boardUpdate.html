@@ -7,7 +7,7 @@
 <body>
 <form action="/board/update" method="post" th:object="${updating}" name="updateForm">
     <label>
-        <input type="hidden" name="pageNum" th:value="*{pageNum}">
+        <input type="hidden" name="id" th:value="*{id}">
         writer : <input name="boardWriter" type="text" th:value="*{boardWriter}"><br/>
         password : <input name="boardPassWord" type="password" id="pw"><br/>
         title : <input name="boardTitle" type="text" th:value="*{boardTitle}"><br/>

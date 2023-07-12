@@ -9,23 +9,31 @@
 <table th:object="${selected}">
     <tr>
         <th>No.</th>
-        <td th:text="*{pageNum}"></td>
-
+        <td th:text="*{id}"></td>
+    </tr>
+    <tr>
         <th>title</th>
         <td th:text="*{boardTitle}"></td>
-
+    </tr>
+    <tr>
         <th>writer</th>
         <td th:text="*{boardWriter}"></td>
-
+    </tr>
+    <tr>
         <th>date</th>
         <td th:text="*{#temporals.format(boardCreatedTime, 'yyyy-MM-dd')}"></td>
-
+    </tr>
+    <tr>
         <th>hits</th>
         <td th:text="*{boardHits}"></td>
-
+    </tr>
+    <tr>
         <th>contents</th>
         <td th:text="*{boardContents}"></td>
-
+    </tr>
+    <tr th:if="*{fileAttached==1}">
+        <th>image</th>
+        <td><img th:src="@{|/upload/*{storedFileName}|}" alt=""/></td>
     </tr>
 </table>
 <button onclick="toModify()">수정하기</button>
@@ -34,24 +42,23 @@
 </body>
 <script th:inline="javascript">
 
-    const toModify = () =>{
-        const pageNum =[[${selected.pageNum}]]
-        location.href="/board/update/" + pageNum;
+    const toModify = () => {
+        const id = [[${selected.id}]]
+        location.href = "/board/update/" + id;
     }
-    const toDelete = () =>{
-        const pageNum = [[${selected.pageNum}]]
+    const toDelete = () => {
+        const id = [[${selected.id}]]
         const ret = confirm("삭제하시겠습니까?")
 
-        if(ret){
+        if (ret) {
             alert("삭제되었습니다.")
-            location.href="/board/delete/" + pageNum;
-        }
-        else{
+            location.href = "/board/delete/" + id;
+        } else {
             alert("취소했습니다.")
         }
     }
-    const toList=()=>{ //글목록 페이지 이동
-        location.href="/board/paging?page="+[[${page}]]; // 목록 이동시 마지막으로 봤던 게시판 목록으로 이동하게 해줌
+    const toList = () => { //글목록 페이지 이동
+        location.href = "/board/paging?page=" + [[${page}]]; // 목록 이동시 마지막으로 봤던 게시판 목록으로 이동하게 해줌
     }
 </script>
 </html>

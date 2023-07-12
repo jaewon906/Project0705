@@ -1,7 +1,6 @@
 package com.miniproject0705.Board;
 
 import lombok.RequiredArgsConstructor;
-import oracle.ucp.proxy.annotation.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -36,18 +35,18 @@ public class BoardController {
         return "boardList";
     }
 
-    @GetMapping("/{pageNum}")
-    public String findOne(@PathVariable Long pageNum, Model model, @PageableDefault(page = 1) Pageable pageable) { // 특정 게시글 조회
-        boardService.updateHits(pageNum);
-        BoardDomain boardDomain = boardService.findById(pageNum);
+    @GetMapping("/{id}")
+    public String findOne(@PathVariable Long id, Model model, @PageableDefault(page = 1) Pageable pageable) { // 특정 게시글 조회
+        boardService.updateHits(id);
+        BoardDomain boardDomain = boardService.findById(id);
         model.addAttribute("selected", boardDomain);
         model.addAttribute("page", pageable.getPageNumber());
         return "boardSelected";
     }
 
-    @GetMapping("update/{pageNum}")
-    public String updateForm(@PathVariable Long pageNum, Model model) {
-        BoardDomain boardDomain = boardService.findById(pageNum);
+    @GetMapping("update/{id}")
+    public String updateForm(@PathVariable Long id, Model model) {
+        BoardDomain boardDomain = boardService.findById(id);
         model.addAttribute("updating", boardDomain);
         return "boardUpdate";
     }
@@ -59,9 +58,9 @@ public class BoardController {
         return "redirect:/board";
     }
 
-    @GetMapping("/delete/{pageNum}")
-    public String deleteForm(@PathVariable Long pageNum) { // 게시판 삭제
-        boardService.delete(pageNum);
+    @GetMapping("/delete/{id}")
+    public String deleteForm(@PathVariable Long id) { // 게시판 삭제
+        boardService.delete(id);
         return "redirect:/board";
 
     }
@@ -77,7 +76,7 @@ public class BoardController {
         model.addAttribute("boardList", boardList);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
-        return "pagingPage";
+        return "boardPaging";
     }
 
 }

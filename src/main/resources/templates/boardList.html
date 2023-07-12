@@ -14,8 +14,8 @@
     <th>hits</th>
   </tr>
   <tr th:each="board:${boardList}">
-    <td th:text="${board.pageNum}"></td>
-    <td><a th:href="@{|/board/${board.pageNum}|}" th:text="${board.boardTitle}"></a></td>
+    <td th:text="${board.id}"></td>
+    <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>
     <td th:text="${board.boardWriter}"></td>
     <td th:text="*{#temporals.format(board.boardCreatedTime, 'yyyy-MM-dd')}"></td> <!-- 형식 변환을 해줍니다.-->
     <td th:text="${board.boardHits}"></td>
